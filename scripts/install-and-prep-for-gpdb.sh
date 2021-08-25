@@ -1,11 +1,12 @@
 #! /bin/bash
+GPDB_VERSION=$1
 
 # Install GPDB
-cd /gpdb-src
+cd /gpdb${GPDB_VERSION}-src
 make install
 
 # Source GPDB and install pygresql
-source /usr/local/gpdb/greenplum_path.sh
+source /usr/local/gpdb${GPDB_VERSION}/greenplum_path.sh
 pip install pygresql
 
 # Start sshd server

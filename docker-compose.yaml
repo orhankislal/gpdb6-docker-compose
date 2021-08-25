@@ -7,6 +7,7 @@ services:
 # ==================================================
 # The production cluster
 # ==================================================
+# image: gcr.io/gpdb6-multinode-cluster/gpdb-image
   cdw:
     image: gpdb6-multinode-cluster/gpdb-image
     hostname: cdw
@@ -14,7 +15,9 @@ services:
     networks:
       - the-network
     volumes:
-      - gpdb-src-volume:/gpdb-src
+      - gpdb5-src-volume:/gpdb5-src
+      - gpdb6-src-volume:/gpdb6-src
+      - gpupgrade-src-volume:/gpupgrade
       - gpdb-scripts-volume:/gpdb-scripts
 
   sdw1:
@@ -24,7 +27,9 @@ services:
     networks:
       - the-network
     volumes:
-      - gpdb-src-volume:/gpdb-src
+      - gpdb5-src-volume:/gpdb5-src
+      - gpdb6-src-volume:/gpdb6-src
+      - gpupgrade-src-volume:/gpupgrade
       - gpdb-scripts-volume:/gpdb-scripts
 
   sdw2:
@@ -34,7 +39,9 @@ services:
     networks:
       - the-network
     volumes:
-      - gpdb-src-volume:/gpdb-src
+      - gpdb5-src-volume:/gpdb5-src
+      - gpdb6-src-volume:/gpdb6-src
+      - gpupgrade-src-volume:/gpupgrade
       - gpdb-scripts-volume:/gpdb-scripts
 
 # The network that bridges all the containers
@@ -43,11 +50,23 @@ networks:
 
 # The mounted volumes
 volumes:
-  gpdb-src-volume:
+  gpdb5-src-volume:
+    driver_opts:
+      o: bind
+      type: none
+      device: ${GPDB5_SRC}
+
+  gpdb6-src-volume:
     driver_opts:
       o: bind
       type: none
       device: ${GPDB6_SRC}
+
+  gpupgrade-src-volume:
+    driver_opts:
+      o: bind
+      type: none
+      device: ${GPUPGRADE_SRC}
 
   gpdb-scripts-volume:
     driver_opts:

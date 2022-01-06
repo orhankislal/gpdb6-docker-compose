@@ -16,7 +16,6 @@ cd bats-core/
 ./install.sh /usr/local
 yum install -y sudo
 yum install -y automake
-yum install -y ag
 
 chown -R gpadmin:gpadmin /gpupgrade
 su - gpadmin -c "

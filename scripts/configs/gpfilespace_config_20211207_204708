@@ -1,0 +1,7 @@
+filespace:fs
+cdw:1:/tmp/fs/gpseg-1
+cdw:6:/tmp/fs/sbdir
+sdw1:2:/tmp/fs/gpseg0
+sdw1:5:/tmp/fs/mirror/gpseg1
+sdw2:3:/tmp/fs/gpseg1
+sdw2:4:/tmp/fs/mirror/gpseg0
